@@ -1,0 +1,15 @@
+{
+    "name": "usurio/aprendendo_rotas",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app"
+        }
+    },
+    "authors": [
+        {
+            "name": "Matheus Ferrucio",
+            "email": "matheusferrucio29@gmail.com"
+        }
+    ],
+    "require": {}
+}
