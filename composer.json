@@ -11,5 +11,7 @@
             "email": "matheusferrucio29@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "league/plates": "^3.6"
+    }
 }

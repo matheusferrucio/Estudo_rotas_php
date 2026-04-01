@@ -9,26 +9,27 @@ function load(string $controller, string $action) {
         if(!class_exists($controllerNamespace)) {
             throw new Exception("O controller $controller não existe");
         }
-            
-        $controllerInstance = new $controllerNamespace;
+
+        $controllerInstance = new $controllerNamespace();
             
         // Verifica se o método passado como parâmetro existe
         if(!method_exists($controllerInstance, $action)) {
             throw new Exception("O método $action não existe no controller $controller");
         }
     
-        $controllerInstance->$action();
+        $controllerInstance->$action((object)$_REQUEST);
+
     } catch (Exception $e) {
         echo $e->getMessage();
     }
 }
 
-$routes = [
+$router = [
     "GET" => [
-        "/" => load("HomeController", "index"),
-        "/contact" => load("ContactController", "index")
+        "/" => fn() => load("HomeController", "index"),
+        "/contact" => fn() => load("ContactController", "index")
     ],
     "POST" => [
-        "contact" => load("ContactController", "store")
-    ]
+        "/contact" => fn() => load("ContactController", "store"),
+    ],
 ];

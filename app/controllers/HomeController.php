@@ -3,7 +3,8 @@ namespace app\controllers;
 
 class HomeController 
 {
-    public function index() {
-        var_dump("index");
+    public function index($params) {
+        var_dump($params);
+        return Controller::view('home');
     }
 }
